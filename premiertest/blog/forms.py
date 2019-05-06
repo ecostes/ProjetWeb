@@ -1,4 +1,5 @@
 from django import forms
+from .models import Article
 
 
 class NouveauContactForm(forms.Form):
@@ -12,3 +13,12 @@ class ContactForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea)
     envoyeur = forms.EmailField(label="Votre adresse e-mail")
     renvoi = forms.BooleanField(help_text="Cochez si vous souhaitez obtenir une copie du mail envoyé.", required=False)
+
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = ['titre', 'auteur', 'contenu', 'date']
+
+    auteur = forms.CharField(max_length=20)
+    titre = forms.CharField(max_length=100)
+    contenu = forms.CharField(widget=forms.Textarea)

@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
 from datetime import datetime
 from .models import Article, Contact
-from .forms import ContactForm, NouveauContactForm
+from .forms import ContactForm, NouveauContactForm, ArticleForm
 
 
 # Create your views here.
@@ -40,9 +40,14 @@ def view_redirection(request):
     return HttpResponse("Vous avez été redirigé.")
 
 
-def list_articles(request, year, month):
-    # Il veut des articles ? Soyons fourbe et redirigeons-le vers djangoproject.com
-    return redirect("https://www.djangoproject.com")
+def list_articles(request, month, year):
+    """ Liste des articles d'un mois précis. """
+    list = Article.objects.all()
+    return HttpResponse(
+        "Vous avez demandé les articles de {0} {1} \n Nom : {2} "
+            .format(month, year, list[0].titre)
+
+    )
 
 
 def date_actuelle(request):
@@ -87,3 +92,20 @@ def nouveau_contact(request):
         'form': form,
         'sauvegarde': sauvegarde
     })
+
+
+def new_article(request):
+    sauvegarde = False
+
+    form = ArticleForm(request.POST or None)
+    if form.is_valid():
+        print("Is Valid")
+        article = Article()
+        article.titre = form.cleaned_data["titre"]
+        article.contenu = form.cleaned_data["contenu"]
+        article.auteur = form.cleaned_data["auteur"]
+        article.save()
+        sauvegarde = True
+
+    return render(request, 'blog/new_article.html', locals())
+
