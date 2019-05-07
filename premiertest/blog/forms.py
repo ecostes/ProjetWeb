@@ -1,5 +1,13 @@
 from django import forms
-from .models import Article
+
+class InscriptionForm(forms.Form):
+    username=forms.CharField(max_length=100)
+    mail=forms.EmailField()
+    password=forms.CharField(widget=forms.PasswordInput)
+
+class ConnexionForm(forms.Form):
+    username=forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput)
 
 class InscriptionForm(forms.Form):
     username=forms.CharField(max_length=100)
