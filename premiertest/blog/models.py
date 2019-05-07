@@ -10,12 +10,11 @@ class Categorie(models.Model):
 
 
 class Article(models.Model):
+    #id_article = models.
     titre = models.CharField(max_length=100)
     auteur = models.CharField(max_length=42)
     contenu = models.TextField(null=True)
-    date = models.DateTimeField(default=timezone.now,
-                                verbose_name="Date de parution")
-    categorie = models.ForeignKey('Categorie', on_delete=models.CASCADE)
+    date = models.DateTimeField(default=timezone.now, verbose_name="Date de parution")
 
     class Meta:
         verbose_name = "article"

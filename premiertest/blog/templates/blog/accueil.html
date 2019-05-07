@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 
-
 {% block title %}Page d'accueil{% endblock %}
 {% block content %}
-  <h1>Bienvenue sur le blog des crêpes bretonnes !</h1>
+  <h1>Girls can do it</h1>
   {% for article in derniers_articles %}
       <div class="article">
         <h3>{{ article.titre }}</h3>
@@ -14,3 +13,4 @@
       <p>Aucun article.</p>
   {% endfor %}
 {% endblock %}
+
