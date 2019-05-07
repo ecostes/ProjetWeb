@@ -10,4 +10,7 @@ urlpatterns = [
     path('', views.accueil, name='accueil'),
     path('article/<int:id>', views.lire, name='lire'),
     path('contact/', views.nouveau_contact, name='contact'),
+    path('Inscription/', views.inscription),
+    path('Connexion/', views.connexion),
+    path('Deconnexion/', views.deconnexion, name="connexion"),
 ]

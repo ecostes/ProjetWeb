@@ -9,14 +9,14 @@ class Migration(migrations.Migration):
         ('blog', '0003_auto_20190430_1629'),
     ]
 
-    operations = [
-        migrations.CreateModel(
-            name='Contact',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nom', models.CharField(max_length=255)),
-                ('adresse', models.TextField()),
-                ('photo', models.ImageField(upload_to='photos/')),
-            ],
-        ),
-    ]
+   # operations = [
+    #    migrations.CreateModel(
+     #       name='Contact',
+      #      fields=[
+     #           ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+      #          ('nom', models.CharField(max_length=255)),
+       #         ('adresse', models.TextField()),
+        #        ('photo', models.ImageField(upload_to='photos/')),
+         #   ],
+       # ),
+    #]

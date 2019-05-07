@@ -1,9 +1,9 @@
-from django.shortcuts import render
 from django.http import HttpResponse, Http404
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from datetime import datetime
 from .models import Article, Contact
-from .forms import ContactForm, NouveauContactForm
+from .forms import ContactForm, NouveauContactForm, InscriptionForm, ConnexionForm
+from django.contrib.auth import *
 
 
 # Create your views here.
@@ -11,8 +11,8 @@ from .forms import ContactForm, NouveauContactForm
 def home(request):
     """ Exemple de page non valide au niveau HTML pour que l'exemple soit concis """
     return HttpResponse("""
-        <h1>Bienvenue sur mon blog !</h1>
-        <p>Les crêpes bretonnes ça tue des mouettes en plein vol !</p>
+        <h1>Girls can do it !! </h1>
+        <p>Test</p>
     """)
 
 
@@ -73,7 +73,7 @@ def contact(request):
 
 
 def nouveau_contact(request):
-    sauvegarde = False
+    sauvegarde= False
     form = NouveauContactForm(request.POST or None, request.FILES)
     if form.is_valid():
         contact = Contact()
@@ -87,3 +87,34 @@ def nouveau_contact(request):
         'form': form,
         'sauvegarde': sauvegarde
     })
+
+def inscription(request):
+    sauvegarde = False
+    form = InscriptionForm(request.POST or None)
+    if form.is_valid():
+        username=form.cleaned_data['username']
+        mail=form.cleaned_data['mail']
+        password=form.cleaned_data['password']
+        user = User.objects.create_user(username, mail, password)
+        user.save()
+        sauvegarde=True
+
+    return render(request, 'blog/Inscription.html', locals())
+
+def connexion(request):
+    form=ConnexionForm(request.POST or None)
+    error=False
+    if form.is_valid():
+        username=form.cleaned_data['username']
+        password=form.cleaned_data['password']
+        user = authenticate(username=username, password=password)
+        if user is not None :
+            login(request, user)
+        else :
+            error=True
+
+    return render(request, "blog/Connexion.html", locals())
+
+#def deconnexion(request):
+ #   logout(request)
+  #  return redirect("connexion")

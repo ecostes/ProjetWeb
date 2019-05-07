@@ -12,3 +12,12 @@ class ContactForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea)
     envoyeur = forms.EmailField(label="Votre adresse e-mail")
     renvoi = forms.BooleanField(help_text="Cochez si vous souhaitez obtenir une copie du mail envoyé.", required=False)
+
+class InscriptionForm(forms.Form):
+    username=forms.CharField(max_length=100)
+    mail=forms.EmailField()
+    password=forms.CharField(widget=forms.PasswordInput)
+
+class ConnexionForm(forms.Form):
+    username=forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput)
