@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-   <link rel="stylesheet" href="/media/css/style.css" />
-   <title>{% block title %}Mon blog sur les crêpes bretonnes{% endblock %}</title>
+    <title>{% block title %}Girls can do it{% endblock %}</title>
 </head>
 <body>
-<header>Crêpes bretonnes</header>
     <nav>
        {% block nav %}
        <ul>
-            <li><a href="/blog/accueil">Accueil</a></li>
-            <li><a href="/blog/">Blog</a></li>
-            <li><a href="/blog/contact/">Contact</a></li>
-            <li><a href="/blog/article/42">Lien vers mon super article N°42</a></li>
+            <li><a href="/blog/">Accueil</a></li>
+            <li><a href="/blog/nouvel_article/">Publier un article</a></li>
        </ul>
        {% endblock %}
    </nav>
    <section id="content">
        {% block content %}{% endblock %}
    </section>
-<footer>&copy; Crêpes bretonnes</footer>
+<footer>&copy; GirlsCanDoIt</footer>
 </body>
 </html>
