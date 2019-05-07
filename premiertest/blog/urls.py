@@ -2,12 +2,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('accueil', views.home),
-    path('article/<int:id_article>', views.view_article),
-    path('articles/<int:year>/<int:month>', views.list_articles),
-    path('redirection', views.view_redirection),
-    path('date', views.date_actuelle),
+    #Affiche la page d'accueil
     path('', views.accueil, name='accueil'),
-    path('article/<int:id>', views.lire, name='lire'),
-    path('contact/', views.nouveau_contact, name='contact'),
+    #Affiche l'article choisi
+    path('article/<int:id_article>', views.lire, name='lire'),
+    #Affiche la page d'écriture d'un nouvel article
+    path('nouvel_article/', views.new_article),
 ]
