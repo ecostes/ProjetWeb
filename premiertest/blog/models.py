@@ -10,7 +10,6 @@ class Categorie(models.Model):
 
 
 class Article(models.Model):
-    #id_article = models.
     titre = models.CharField(max_length=100)
     auteur = models.CharField(max_length=42)
     contenu = models.TextField(null=True)
@@ -21,11 +20,6 @@ class Article(models.Model):
         ordering = ['date']
 
     def __str__(self):
-        """
-        Cette méthode que nous définirons dans tous les modèles
-        nous permettra de reconnaître facilement les différents objets que
-        nous traiterons plus tard dans l'administration
-        """
         return self.titre
 
 
@@ -36,3 +30,4 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.nom
+
