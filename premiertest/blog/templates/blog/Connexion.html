@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+
+
+{% block title %}Connexion{% endblock %}
+{% block content %}
 <h1>Se connecter</h1>
 
 {% if error %}
@@ -13,3 +18,4 @@ Vous êtes connecté, {{ user.username }} !
     <input type="submit" value="Se connecter" />
 </form>
 {% endif %}
+{% endblock %}

@@ -2,11 +2,12 @@ from django.db import models
 from django.utils import timezone
 
 
-class Categorie(models.Model):
+
+"""class Categorie(models.Model):
     nom = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.nom
+        return self.nom"""
 
 
 class Article(models.Model):
@@ -17,17 +18,7 @@ class Article(models.Model):
 
     class Meta:
         verbose_name = "article"
-        ordering = ['date']
+        ordering = ['-date']
 
     def __str__(self):
         return self.titre
-
-
-class Contact(models.Model):
-    nom = models.CharField(max_length=255)
-    adresse = models.TextField()
-    photo = models.ImageField(upload_to="photos/")
-
-    def __str__(self):
-        return self.nom
-

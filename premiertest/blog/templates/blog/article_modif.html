@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block title %}Modifier un article{% endblock %}
+{% block content %}
+    <h1>Modifier votre article</h1>
+
+        <form action="{% url 'modif' article.id %}" method="POST">
+            {% csrf_token %}
+            <p><label for="id_titre">Titre:</label> <input id="id_titre" type="text" name="titre" size=100 value={{article.titre}} /></p>
+            <p><label for="id_contenu">Contenu:</label> <input id="id_contenu" type="text" name="contenu" height=5000 width=500 value="{{article.contenu}}"/></p>
+            <input type="submit" value = "Modifier"/>
+        </form>
+{% endblock %}

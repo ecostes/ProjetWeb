@@ -1,10 +1,10 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render
 from datetime import datetime
-from .models import Article, Contact
-from .forms import InscriptionForm, ConnexionForm, ArticleForm
+from .models import Article
+from .forms import InscriptionForm, ConnexionForm, ArticleForm, ModifArticleForm
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 
 
@@ -49,6 +49,7 @@ def inscription(request):
 
     return render(request, 'blog/Inscription.html', locals())
 
+
 def connexion(request):
     form=ConnexionForm(request.POST or None)
     error=False
@@ -63,6 +64,19 @@ def connexion(request):
 
     return render(request, "blog/Connexion.html", locals())
 
-#def deconnexion(request):
- #   logout(request)
-  #  return redirect("connexion")
+
+def deconnexion(request):
+    logout(request)
+    return redirect(accueil)
+
+
+def article_modif(request, id_article):
+    article = Article.objects.get(id = id_article)
+    print(article.titre)
+    if request.method == "POST":
+        article.titre = request.POST["titre"]
+        print(article.titre)
+        article.contenu = request.POST["contenu"]
+        article.save()
+
+    return render(request, 'blog/article_modif.html', {'article': article})
