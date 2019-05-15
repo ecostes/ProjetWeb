@@ -1,13 +1,12 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render
 from datetime import datetime
-from .models import Article, Commentaire
+from .models import Article
 from .forms import InscriptionForm, ConnexionForm, ArticleForm, CommentaireForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.http import HttpResponse
-#from django.contrib.auth.decorators import login_required
 
 
 def accueil(request):
@@ -18,11 +17,7 @@ def accueil(request):
 
 def lire(request, id_article):
     article = Article.objects.get(id = id_article)
-
-
     return render(request, 'blog/article.html', {'article': article})
-
-
 
 
 def new_article(request):
@@ -58,6 +53,7 @@ def inscription(request):
 
     return render(request, 'blog/Inscription.html', locals())
 
+
 def connexion(request):
     if not request.user.is_authenticated:
         form=ConnexionForm(request.POST or None)
@@ -79,3 +75,15 @@ def connexion(request):
 def deconnexion(request):
     logout(request)
     return redirect(connexion)
+
+
+def article_modif(request, id_article):
+    article = Article.objects.get(id = id_article)
+    print("Avant modif: ",article.titre)
+    if request.method == "POST":
+        article.titre = request.POST["titre"]
+        print(article.titre)
+        article.contenu = request.POST["contenu"]
+        article.save()
+
+    return render(request, 'blog/article_modif.html', {'article': article})
