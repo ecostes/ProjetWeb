@@ -2,7 +2,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render
 from datetime import datetime
 from .models import Article
-from .forms import InscriptionForm, ConnexionForm, ArticleForm, ModifArticleForm
+from .forms import InscriptionForm, ConnexionForm, ArticleForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
