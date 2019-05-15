@@ -31,3 +31,15 @@ class Contact(models.Model):
     def __str__(self):
         return self.nom
 
+class Commentaire(models.Model):
+    pseudo=models.CharField(max_length=100)
+    contenu=models.TextField(null=True)
+    id_art=models.IntegerField()
+    date = models.DateTimeField(default=timezone.now, verbose_name="Publié le")
+
+    class Meta:
+        verbose_name="Commentaire"
+        ordering=['-date']
+
+    def __str__(self):
+        return self.titre
