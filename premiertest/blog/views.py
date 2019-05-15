@@ -72,7 +72,7 @@ def deconnexion(request):
 
 def article_modif(request, id_article):
     article = Article.objects.get(id = id_article)
-    print(article.titre)
+    print("Avant modif: ",article.titre)
     if request.method == "POST":
         article.titre = request.POST["titre"]
         print(article.titre)
