@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     path('', views.accueil, name='accueil'),
-    path('Inscription/', views.inscription),
+    path('Inscription/', views.inscription, name="Inscription"),
     path('Connexion/', views.connexion),
     path('Deconnexion/', views.deconnexion, name="deconnexion"),
     path('article/<int:id_article>', views.lire, name='lire'),

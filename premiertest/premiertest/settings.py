@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+STATICFILES_DIRS=['C:/Users/Eloise/PycharmProjects/Web/ProjetWeb/premiertest/blog/static',]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,18 +1,197 @@
-{% extends "base.html" %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Girls can do it!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block title %}Date et heure{% endblock %}
-{% block content %}
-    <h1>Inscription</h1>
 
-  {% if sauvegarde %}
-      <p>Inscription validée.</p>
-  {% endif %}
+<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Slabo 27px" rel="stylesheet">
 
-  <p>
-      <form method="post" enctype="multipart/form-data" action=".">
-         {% csrf_token %}
-         {{ form.as_p }}
-         <input type="submit"/>
-      </form>
-  </p>
-{% endblock %}
+	<!-- Animate.css-->
+	<link rel="stylesheet" href="/static/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="/static/css/icomoon.css">
+	<!-- Bootstrap-->
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+
+	<!-- Magnific Popup-->
+	<link rel="stylesheet" href="/static/css/magnific-popup.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="/static/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/static/js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+
+	<div class="load"></div>
+
+	<div id="page">
+		<nav class="menu-nav" role="navigation">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="top-menu">
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-7 text-left menu-1">
+									<ul>
+										<li><a href="index.html">Accueil</a></li>
+										<li class="has-dropdown">
+											<a href="blog.html">Blog</a>
+											<ul class="dropdown">
+												<li><a href="blogCategorie.html">Telecom</a></li>
+												<li><a href="#">Mecanique</a></li>
+												<li><a href="#">Informatique</a></li>
+											</ul>
+										</li>
+										<li><a href="publier.html">Publier</a></li>
+										<li ><a href="about.html">A propos</a></li>
+									</ul>
+								</div>
+								<div class="col-sm-5 text-right menu-1 ">
+									<ul>
+										<li ><a href="inscription.html">Inscription</a></li>
+										<li><a href="connection.html">Connection</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12 text-center menu-2">
+						<div id="titre" class="animated pulse">
+							<h1>Girls Can Do It!</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 ">
+							<div class="line">
+								<div class="row">
+									<div class="col-md-4 col-md-offset-4 text-center">
+									<div class="line-message">
+										<h2>Inscription</h2>
+									</div>
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+	<div id="fh5co-contact" class="fh5co-no-pd-top">
+		<div class="container">
+			<div class="row">
+				<div>
+					{% if sauvegarde %}
+     					 <p>Inscription validée.</p>
+  					{% endif %}
+				<!-- Ne pas toucher au code jusqu'à la ligne 118-->
+  				<p>
+      				<form method="post" enctype="multipart/form-data" action=".">
+         				{% csrf_token %}
+         				{{ form.as_p }}
+         				<input type="submit" id="submit" class="btn btn-primary" value="Envoyer">
+      				</form>
+  				</p>
+
+						<div class="form-group row">
+							<div class="col-md-12 field">
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="line">
+			</div>
+		</div>
+	</div>
+
+	<footer id="foot" role="contentinfo">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-5 fh5co-widget">
+					<h4>Notre Site Web </h4>
+					<p>Ici tu peut trouver des histoires des femmes qui travaillent dans metiers "pour hommes", ou mieux dit, des femmes qui travaillent dans un enviroment avec plus d'hommes que de femmes. On est un groupe de 4 filles qui etudient ingenierie, du coup on sait de c'est qu'on parle ici! Mais Ã§a ne nous a jamais arrete de faire c'est qu'on aime.</p>
+				</div>
+
+				<div class="col-md-3 col-md-push-1">
+					<h4>Links</h4>
+					<ul class="foot-links">
+                        <li class="active"><a href="index.html">Accueil</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="publier.html">Publier</a></li>
+                        <li><a href="about.html">A propos</a></li>
+                    </ul>
+				</div>
+
+				<div class="col-md-4 col-md-push-1">
+					<h4>Contact Information</h4>
+					<ul class="foot-links">
+						<li>20 Avenue Albert Einstein, <br>Departement de Telecommunications, <br>69100 Villeurbanne, <br>Auvergne-RhÃ´ne-Alpes, France</li>
+						<li><a href="mailto:girlscandoit@gmail.com">girlscandoit@gmail.com</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+						<small class="block">Designed by: <br>InÃ©s Arroyo GÃ³mez, Andrea Rico DÃ­az Romero, EloÃ¯se Costes, Juliette Tissot
+                        </small>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+
+		<!-- jQuery -->
+	<script src="/static/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="/static/js/jquery.easing.1.3.js"></script>
+
+	<!-- Bootstrap -->
+	<script src="/static/js/bootstrap.min.js"></script>
+
+	<!-- Waypoints -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="/static/js/jquery.magnific-popup.min.js"></script>
+	<script src="/static/js/magnific-popup-options.js"></script>
+	<!-- Main -->
+	<script src="/static/js/main.js"></script
+
+	</body>
+</html>
