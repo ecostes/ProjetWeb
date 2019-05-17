@@ -2,7 +2,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, render
 from datetime import datetime
 from .models import Article
-from .forms import InscriptionForm, ConnexionForm, ArticleForm, CommentaireForm
+from .forms import InscriptionForm, ConnexionForm, ArticleForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
@@ -41,18 +41,26 @@ def new_article(request):
 
 
 def inscription(request):
-    sauvegarde = False
-    form = InscriptionForm(request.POST or None)
-    if form.is_valid():
-        username=form.cleaned_data['username']
-        mail=form.cleaned_data['mail']
-        password=form.cleaned_data['password']
-        user = User.objects.create_user(username, mail, password)
-        user.save()
-        sauvegarde=True
+    if not request.user.is_authenticated:
+        sauvegarde = False
+        util= []
+        for objet in User.objects.all():
+            util.append(objet.username)
+        form = InscriptionForm(request.POST or None)
+        if form.is_valid():
+            for name in util:
+                if name==form.cleaned_data['username']:
+                    return redirect(inscription)
+            username=form.cleaned_data['username']
+            mail=form.cleaned_data['mail']
+            password=form.cleaned_data['password']
+            user = User.objects.create_user(username, mail, password)
+            user.save()
+            sauvegarde=True
 
-    return render(request, 'blog/Inscription.html', locals())
-
+        return render(request, 'blog/Inscription.html', locals())
+    else :
+        return redirect(accueil)
 
 def connexion(request):
     if not request.user.is_authenticated:
@@ -74,7 +82,7 @@ def connexion(request):
 
 def deconnexion(request):
     logout(request)
-    return redirect(connexion)
+    return redirect(accueil)
 
 
 def article_modif(request, id_article):
@@ -87,3 +95,11 @@ def article_modif(request, id_article):
         article.save()
 
     return render(request, 'blog/article_modif.html', {'article': article})
+
+#def ChangeMdp(request, id_user):
+ #   user=User.objects.get(user.id=id_user)
+  #  user.set_password('new password')
+   # user.save()
+
+    #return render(request, 'blog/newmdp.html', locals())
+

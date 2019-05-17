@@ -10,4 +10,5 @@ urlpatterns = [
     path('article/<int:id_article>', views.lire, name='lire'),
     path('nouvel_article/', views.new_article),
     path('article_modif/<int:id_article>', views.article_modif, name='modif'),
+    #path('newmdp/', views.ChangeMdp),
 ]
